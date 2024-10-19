@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockSmart - Controle de Estoque</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div>
+            <img src="image.png" alt="logo">
+        </div>
+
+        <h1>StockSmart - Controle de Estoque em Tempo Real</h1>  
+    </header>
+
+    <main>
+        <section class="product-registration">
+            <h2>Cadastro de Produtos</h2>
+            <form id="productForm">
+                <input type="text" id="productName" placeholder="Nome do Produto" required>
+                <select id="productMeasure" required>
+                    <option value="" disabled selected>Medida para quantidade</option>
+                    <option value="L">Litro (L)</option>
+                    <option value="ml">Mililitro (ml)</option>
+                    <option value="Kg">Quilograma (Kg)</option>
+                    <option value="g">Grama (g)</option>
+                    <option value="Unidade">Unidade(s)</option>
+                </select>
+                <input type="number" id="productQuantity" placeholder="Quantidade" required>
+                <input type="number" step="0.01" id="productPrice" placeholder="Preço" required>
+                <button type="submit">Adicionar Produto</button>
+            </form>
+        </section>
+
+        <section class="inventory">
+            <h2>Estoque Atual</h2>
+            <table id="inventoryTable">
+                <thead>
+                    <tr>
+                        <th>Nome do Produto</th>
+                        <th>Quantidade</th>
+                        <th>Preço</th>
+                        <th>
+                            <img src="robo.png" alt="robo" id="robo">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Produtos serão adicionados dinamicamente aqui -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <dialog id="lowStockDialog">
+        <p>Atenção: O produto "<span id="dialogProductName"></span>" está com estoque baixo. Realize uma nova encomenda.</p>
+        <button id="dialogCloseButton">Fechar</button>
+    </dialog>
+
+    <script src="script.js"></script>
+</body>
+</html>
