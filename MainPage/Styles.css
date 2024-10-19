@@ -1,0 +1,100 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+header {
+    background-color: #006838;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+header img {
+    height: 50px;
+    width: 200px;
+    margin-left: 150px;
+}
+header nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+header a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease-in;
+
+}
+
+header a:hover {
+    transform: scale(1.05);
+}
+
+header a.saiba-mais {
+    background-color: #ff9800;
+    padding: 10px;
+    border-radius: 20px;
+}
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+.text-content {
+    margin-top: 100px;
+    flex: 1;
+    text-align: left;
+    padding-right: 20px;
+}
+.image-content {
+    flex: 1;
+    margin-left: 300px;
+}
+main h1 {
+    color: #006838;
+    font-size: 46px;
+}
+main p {
+    margin-top: 10px;
+    color: #006838;
+    font-size: 21px;
+    max-width: 600px;
+}
+.cta-button {
+    display: inline-block;
+    margin-top: 50px;
+    padding: 17px 40px;
+    background-color: #ff9800;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s ease-in;
+
+}
+.cta-button:hover {
+    background-color: #ff9800;
+    transform: scale(1.05);
+}
+.whatsapp-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    cursor: pointer;
+}

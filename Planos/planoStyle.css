@@ -1,0 +1,142 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f7f7;
+}
+
+header {
+    background-color: #006838;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+header img {
+    height: 50px;
+    width: 200px;
+}
+
+
+.pricing-container {
+    text-align: center;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.header-tabs {
+    margin-bottom: 30px;
+
+}
+
+.tab-button {
+    color: #ffffff;
+    background-color: #006838;
+    border: none;
+    padding: 15px 25px;
+    cursor: pointer;
+    border-radius: 25px;
+    margin: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in, transform 0.3s ease-in;
+}
+
+.tab-button:hover {
+    background-color: #013a1f;
+    transform: scale(1.05);
+}
+
+.tab-button.active:hover {
+    background-color: #006838;
+    color: white;
+    transform: scale(1.05);
+}
+
+.pricing-title {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.pricing-plans {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.plan {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 30px;
+    width: 300px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.plan:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.plan h3 {
+    font-size: 26px;
+    color: #006838;
+    margin-bottom: 20px;
+}
+
+.price {
+    font-size: 40px;
+    color: #006838;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+.price span {
+    font-size: 40px;
+}
+
+.description {
+    font-size: 16px;
+    margin-bottom: 25px;
+    color: #666;
+}
+
+.btn {
+    background-color: #006838;
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 16px;
+    transition: 0.3s ease-in;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.features {
+    list-style: none;
+    padding: 0;
+    font-size: 16px;
+    text-align: left;
+    color: #555;
+}
+
+.features li {
+    margin: 10px 0;
+    position: relative;
+    padding-left: 25px;
+}
+
+.features li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: #006838;
+    font-weight: bold;
+}
