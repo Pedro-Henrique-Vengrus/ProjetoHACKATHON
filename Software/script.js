@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const dialogCloseButton = document.getElementById('dialogCloseButton');
 
     let productId = 1;
-    const lowStockThreshold = 5;
+    const lowStockThreshold = 25;
 
     productForm.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const row = document.createElement('tr');
         row.dataset.productId = productId;
 
-        // Atualizei para incluir a medida junto com a quantidade
         row.innerHTML = `
             <td>${name}</td>
             <td>${quantity} ${measure}</td>

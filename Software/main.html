@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StockSmart - Controle de Estoque</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .loading-icon {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid orange;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -29,8 +45,7 @@
                     <option value="Unidade">Unidade(s)</option>
                 </select>
                 <input type="number" id="productQuantity" placeholder="Quantidade" required>
-                <input type="number" step="0.01" id="productPrice" placeholder="Preço" required>
-                <button type="submit">Adicionar Produto</button>
+                                <button type="submit">Adicionar Produto</button>
             </form>
         </section>
 
@@ -41,8 +56,7 @@
                     <tr>
                         <th>Nome do Produto</th>
                         <th>Quantidade</th>
-                        <th>Preço</th>
-                        <th>
+                                                <th id="statusHeader">
                             <img src="robo.png" alt="robo" id="robo">
                         </th>
                     </tr>
@@ -59,6 +73,88 @@
         <button id="dialogCloseButton">Fechar</button>
     </dialog>
 
-    <script src="script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const productForm = document.getElementById('productForm');
+        const productNameInput = document.getElementById('productName');
+        const productQuantityInput = document.getElementById('productQuantity');
+        const productMeasureSelect = document.getElementById('productMeasure');
+                const inventoryTableBody = document.querySelector('#inventoryTable tbody');
+        const dialog = document.getElementById('lowStockDialog');
+        const dialogProductName = document.getElementById('dialogProductName');
+        const dialogCloseButton = document.getElementById('dialogCloseButton');
+
+        let productId = 1;
+        const lowStockThreshold = 25;
+
+        productForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            addProduct(productNameInput.value, productQuantityInput.value, productMeasureSelect.value);
+            productForm.reset();
+        });
+
+        dialogCloseButton.addEventListener('click', function () {
+            dialog.close();
+        });
+
+        function addProduct(name, quantity, measure) {
+            const row = document.createElement('tr');
+            row.dataset.productId = productId;
+
+            row.innerHTML = `
+                <td>${name}</td>
+                <td>${quantity} ${measure}</td>
+                                <td class="actions">
+                    <span class="loading-icon"></span>
+                </td>
+            `;
+
+            inventoryTableBody.appendChild(row);
+
+            setTimeout(() => {
+                row.querySelector('.actions').innerHTML = `
+                    <span class="confirmation">✔ Produto Adicionado</span>
+                `;
+                row.querySelector('.actions').style.color = 'green';
+
+                checkLowStock(name, quantity);
+                productId++;
+
+                row.querySelector('.delete')?.addEventListener('click', function () {
+                    row.remove();
+                });
+
+                row.querySelector('.edit')?.addEventListener('click', function () {
+                    editProduct(row);
+                });
+            }, 3000);
+        }
+
+        function checkLowStock(name, quantity) {
+            if (quantity <= lowStockThreshold) {
+                dialogProductName.textContent = name;
+                dialog.showModal();
+                placeOrder(name);
+            }
+        }
+
+        function placeOrder(productName) {
+            console.log(`IA: Iniciando nova encomenda para o produto: ${productName}`);
+            // Lógica para encomendar automaticamente (simulação por enquanto)
+        }
+
+        function editProduct(row) {
+            const name = row.children[0].textContent;
+            const quantityMeasure = row.children[1].textContent;
+            const [quantity, measure] = quantityMeasure.split(' ');
+            
+            productNameInput.value = name;
+            productQuantityInput.value = quantity;
+            productMeasureSelect.value = measure;
+            
+            row.remove();
+        }
+    });
+    </script>
 </body>
 </html>
